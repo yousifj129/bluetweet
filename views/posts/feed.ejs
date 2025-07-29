@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <h1>Feed</h1>
+    <ul>
+      <% allPosts.forEach(post => { %>
+      <li>
+        <h2><%= post.creator.username %></h2>
+        <h3>Title: <%= post.title %></h3>
+        <% if (post.image) { %>
+        <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
+        <% } %>
+
+        <p>Content: <%= post.content %></p>
+        <p>Likes: <%= post.likes.length %></p>
+        <p>Dislikes: <%= post.dislikes.length %></p>
+        <% post.comments.forEach(comment => { %>
+        <p>comment.content</p>
+        <%}); %> 
+        <% if (user) { %> 
+            <% if (post.creator._id == user._id) { %>
+            <a href="/posts/delete/<%= post._id %>">delete post</a>
+            <a href="/posts/update/<%= post._id %>">update post</a>
+            <% } %> 
+            <a href="/posts/like/<%= post._id %>">like</a>
+            <a href="/posts/dislike/<%= post._id %>">dislike</a>
+        <% } %>
+        <hr />
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

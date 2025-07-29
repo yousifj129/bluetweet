@@ -19,13 +19,6 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.render("auth/sign-up", {
-                error: "Please enter a valid email address."
-            });
-        }
-
         if (password.length < 6) {
             return res.render("auth/sign-up", {
                 error: "Password must be at least 6 characters long."
@@ -90,7 +83,7 @@ router.post("/login", async (req, res) => {
             _id: userInDatabase._id,
         };
 
-        res.redirect("/");
+        res.redirect("/posts/new");
     } catch (error) {
         console.error("Error during sign-in:", error);
         res.render("auth/sign-in", { error: "An unexpected error occurred." });
