@@ -80,6 +80,36 @@ router.put("/:id", upload.single('file'), async (req, res) => {
         res.redirect("/auth/login")
     }
 })
+router.get("/like/:id", async (req, res) => {
+    const post = await Post.findById(req.params.id)
+
+    if (req.session.user) {
+        if (!post.likes.includes(req.session.user._id)) {
+            if (post.dislikes.includes(req.session.user._id)) {
+                const index = post.dislikes.indexOf(req.session.user._id)
+                post.dislikes.splice(index, 1)
+            }
+            post.likes.push(req.session.user._id)
+            await Post.findByIdAndUpdate(req.params.id, post)
+        }
+    }
+    res.redirect("/posts/")
+})
+router.get("/dislike/:id", async (req, res) => {
+    const post = await Post.findById(req.params.id)
+
+    if (req.session.user) {
+        if (!post.dislikes.includes(req.session.user._id)) {
+            if (post.likes.includes(req.session.user._id)) {
+                const index = post.likes.indexOf(req.session.user._id)
+                post.likes.splice(index, 1)
+            }
+            post.dislikes.push(req.session.user._id)
+            await Post.findByIdAndUpdate(req.params.id, post)
+        }
+    }
 
 
+    res.redirect("/posts/")
+})
 module.exports = router
