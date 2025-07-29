@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Post</title>
+    <link rel="stylesheet" href="../style.css">
+
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <h1>Update Post</h1>
+    <form action="/posts/<%= post._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+      <label for="title">Post Title: </label>
+      <input type="text" name="title" id="title" value="<%= post.title %>" />
+
+      <label for="content">Content: </label>
+      <textarea type="text" name="content" id="content"><%= post.content %> </textarea>
+      <input type="submit" value="post" />
+    </form>
+  </body>
+</html>

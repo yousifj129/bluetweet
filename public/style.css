@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    flex-direction: column;
+}
+a{
+    color: wheat;
+}
+a:focus{
+    color: aqua;
+}

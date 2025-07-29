@@ -13,32 +13,33 @@ const commentSchema = new mongoose.Schema({
 })
 
 const postSchema = new mongoose.Schema({
-
     creator:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:[true, "creator is required" ]
     },
+    title:{
+        type: String,
+        required: [true, "can't post without title"]
+    },
     content:{
         type:String,
         required:[true, "can't leave post content as empty"]
     },
-    images:{
-        type:[String]
+    image:{
+        type:String
     },
     likes:{
         type:[mongoose.Schema.Types.ObjectId],
-        ref:"User",
-        default: 0
+        ref:"User"
     },
     dislikes:{
         type:[mongoose.Schema.Types.ObjectId],
-        ref:"User",
-        default: 0
+        ref:"User"
     },
     comments: [commentSchema]
 
-})
+}, {timestamps: true})
 
 const Post = mongoose.model("Post",postSchema)
 
