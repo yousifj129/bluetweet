@@ -10,8 +10,8 @@
     <%- include("../partials/navbar.ejs") %>
 
     <h1>Feed</h1>
-    <ul>
-      <li>
+    
+      <div class="post">
         <h2><%= post.creator.username %></h2>
         <h3>Title: <%= post.title %></h3>
         <% if (post.image) { %>
@@ -43,7 +43,7 @@
           <br />
           <% }); %>
         </div>
-      </li>
-    </ul>
+    </div>
+    
   </body>
 </html>

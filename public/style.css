@@ -1,4 +1,4 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,113 +6,107 @@ body{
     color: white;
     flex-direction: column;
 }
-a{
+
+a {
     color: wheat;
 }
-a:focus{
+
+a:focus {
     color: aqua;
 }
 
 
 
-a {
-  color: inherit;
-}
-
 input,
 select,
 textarea,
 button {
-  font-family: inherit;
-  font-size: 100%;
+    font-family: inherit;
+    font-size: 100%;
 }
 
 button,
 label {
-  cursor: pointer;
-}
-
-select {
-  appearance: none;
-}
-
-/* Remove native arrow on IE */
-select::-ms-expand {
-  display: none;
-}
-
-/*Remove dotted outline from selected option on Firefox*/
-/*https://stackoverflow.com/questions/3773430/remove-outline-from-select-box-in-ff/18853002#18853002*/
-/*We use !important to override the color set for the select on line 99*/
-select:-moz-focusring {
-  color: transparent !important;
-  text-shadow: 0 0 0 var(--white);
+    cursor: pointer;
 }
 
 textarea {
-  resize: none;
-  border: 1px solid white;
+    resize: none;
+    border: 1px solid white;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
-
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-
-/* FORM ELEMENTS
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 form h1 {
-  margin-bottom: 1.5rem;
-}
-
-form li,
-form .grid > *:not(:last-child) {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 form select,
 form input,
-form textarea,
 form button {
-  width: 100%;
-  line-height: 1.5;
-  padding: 15px 10px;
-  border: 1px solid white;
-  color: var(--white);
-  background: var(--bgFormEls);
-  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
-    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+    display: inline;
+    width: 100%;
+    line-height: 1.2;
+    padding: 15px 10px;
+    border: 1px solid white;
+    color: var(--white);
+    background-color: black;
+    transition: ease-in-out 0.3s
 }
 
 form textarea {
-  height: 170px;
+    height: 170px;
     border: 1px solid white;
+    background-color: black;
+    width: 99%;
+    color: white;
+    transition: ease-in-out 0.3s
 
 }
 
-form ::placeholder {
-  color: inherit;
-  /*Fix opacity issue on Firefox*/
-  opacity: 1;
-}
 
 
 form select:focus,
 form input:focus,
 form textarea:focus {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 form select:hover,
 form input:hover,
 form textarea:hover {
-  transform: scale(1.02);
+    transform: scale(1.01);
+}
+
+form input,
+form button {
+    margin-top: 15px;
+    background-color: rgb(40, 40, 40);
+    color: wheat;
+}
+
+.post {
+    border: 1px white solid;
+    padding: 10px;
+    width: 50%;
+}
+
+#navbar{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    color: white;
+    border-bottom: 1px white solid;
+    margin: 5px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }

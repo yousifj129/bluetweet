@@ -70,7 +70,7 @@ router.get("/update/:id", async (req, res) => {
     res.render("./posts/updatePost.ejs", { post: post })
 })
 
-router.put("/:id", upload.single('file'), async (req, res) => {
+router.put("/:id", async (req, res) => {
     const triedPost = await Post.findById(req.params.id).populate()
     if (req.session.user._id == triedPost.creator._id) {
         let post = req.body

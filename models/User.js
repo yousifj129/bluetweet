@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
     iconURL:{
         type:String,
         required: false
+    },
+    followers:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "User",
+        require: false
     }
 })
 
