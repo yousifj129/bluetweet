@@ -18,11 +18,8 @@ cloudinary.config({
 
 router.get("/", async (req, res) => {
     const allPosts = await Post.find().populate("creator")
-
-    console.log("original: ", req.originalUrl)
-    console.log("url: ", req.url)
-    console.log("base url:", req.baseUrl)
     res.render("./posts/feed.ejs", { allPosts: allPosts })
+    
 })
 
 
@@ -90,6 +87,7 @@ router.put("/:id", async (req, res) => {
 })
 router.post("/like/:id", async (req, res) => {
     const post = await Post.findById(req.params.id)
+    const originalUrl = req.headers.referer.replace("http://localhost:3000", "")
 
     if (req.session.user) {
         if (!post.likes.includes(req.session.user._id)) {
@@ -101,11 +99,12 @@ router.post("/like/:id", async (req, res) => {
             await Post.findByIdAndUpdate(req.params.id, post)
         }
     }
-    res.redirect(req.baseUrl)
+    res.redirect(originalUrl)
 })
 router.post("/dislike/:id", async (req, res) => {
-    const post = await Post.findById(req.params.id)
 
+    const post = await Post.findById(req.params.id)
+    const originalUrl = req.headers.referer.replace("http://localhost:3000", "")
     if (req.session.user) {
         if (!post.dislikes.includes(req.session.user._id)) {
             if (post.likes.includes(req.session.user._id)) {
@@ -118,11 +117,12 @@ router.post("/dislike/:id", async (req, res) => {
     }
 
 
-    res.redirect(req.baseUrl)
+    res.redirect(originalUrl)
 })
 
 router.post("/comment/:id", isSignedIn, async (req, res) => {
     const post = await Post.findById(req.params.id)
+    
     post.comments.push({
         commenter: new mongoose.Types.ObjectId(req.session.user._id),
         content: req.body.content

@@ -1,4 +1,4 @@
-     <%- include("../partials/scrollBack.ejs") %>
+<%- include("../partials/scrollBack.ejs") %>
 
 <nav id="navbar">
     <% if (user){ %>
@@ -6,7 +6,7 @@
     <a href="/posts">Feed</a>
     <a href="/posts/new">Create Post</a>
 
-    <a href="/users/<%= user._id %>"><%= user.username %></a>
+    <a href="/users/<%= user._id %>"><img src="<%= user.iconURL %>" alt="icon" id="profileicon"></a>
     
 
     <%} else{ %>

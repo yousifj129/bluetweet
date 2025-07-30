@@ -1,7 +1,7 @@
 const router = require("express").Router()
+const { Random } = require("random")
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
-
 
 router.get("/sign-up", (req, res) => {
     res.render("auth/sign-up.ejs", { error: null })
@@ -10,7 +10,9 @@ router.get("/sign-up", (req, res) => {
 router.post("/sign-up", async (req, res) => {
     try {
         const { username, password } = req.body;
-
+        const randomNumber = Math.min(Math.floor(Math.random()*100+1), 100)
+        const iconL = `https://avatar.iran.liara.run/public/${randomNumber}`
+        console.log(iconL)
         // VALIDATION
         //  Check if all the necessary fields are there
         if (!username || !password) {
@@ -40,7 +42,9 @@ router.post("/sign-up", async (req, res) => {
         const newUser = {
             username,
             password: hashedPassword,
+            iconURL: iconL
         };
+        console.log(newUser)
 
         await User.create(newUser);
 
@@ -81,6 +85,7 @@ router.post("/login", async (req, res) => {
         req.session.user = {
             username: userInDatabase.username,
             _id: userInDatabase._id,
+            iconURL: userInDatabase.iconURL
         };
 
         res.redirect("/posts");

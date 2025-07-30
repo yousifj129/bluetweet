@@ -3,13 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= user.username %>'s profile</title>
+    <title><%= viewedUser.username %>'s profile</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include("../partials/navbar.ejs") %>
-        <div class="container">
-        <%- include("../partials/postPartial.ejs") %>
+
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <img
+          src="<%= viewedUser.iconURL %>"
+          alt="icon"
+          id="icon"
+          width="75px"
+        />
+        <h3><%= viewedUser.username %></h3>
+        <% if (user._id != viewedUser._id) { %>
+        <form action="/users/follow/<%= viewedUser._id %>" method="post">
+          <input type="submit" value="Followers: <%= viewedUser.followers.length %>" />
+        </form>
+        <% } else{ %>
+            <h3>Followers: <%= viewedUser.followers.length %></h3>
+
+          <% } %>
+
       </div>
+      <%- include("../partials/postPartial.ejs") %>
+    </div>
   </body>
 </html>
