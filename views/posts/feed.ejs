@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <%- include("../partials/navbar.ejs") %>
@@ -22,9 +22,7 @@
         <p>Content: <%= post.content %></p>
         <p>Likes: <%= post.likes.length %></p>
         <p>Dislikes: <%= post.dislikes.length %></p>
-        <% post.comments.forEach(comment => { %>
-        <p>comment.content</p>
-        <%}); %> 
+        <p>Comments: <%= post.comments.length %></p>
         <% if (user) { %> 
             <% if (post.creator._id == user._id) { %>
             <a href="/posts/delete/<%= post._id %>">delete post</a>
@@ -33,6 +31,7 @@
             <a href="/posts/like/<%= post._id %>">like</a>
             <a href="/posts/dislike/<%= post._id %>">dislike</a>
         <% } %>
+        <a href="/posts/<%= post._id %>">See Post Details</a>
         <hr />
       </li>
       <% }); %>

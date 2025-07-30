@@ -6,7 +6,8 @@ const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 const dotenv = require("dotenv").config()
 var fs = require('fs');
-const isSignedIn = require("../middleware/isSignedIn")
+const isSignedIn = require("../middleware/isSignedIn");
+const mongoose  = require("mongoose");
 // Configuration
 cloudinary.config({
     cloud_name: process.env.CLOUDNAME,
@@ -111,5 +112,27 @@ router.get("/dislike/:id", async (req, res) => {
 
 
     res.redirect("/posts/")
+})
+
+router.post("/comment/:id", isSignedIn, async (req, res) => {
+    const post = await Post.findById(req.params.id)
+    post.comments.push({
+        commenter: new mongoose.Types.ObjectId(req.session.user._id),
+        content: req.body.content
+    })
+
+    await Post.findByIdAndUpdate(req.params.id, post)
+    res.redirect("/posts/"+req.params.id)
+})
+
+router.get("/:id", async (req, res) => {
+    const post = await Post.findById(req.params.id).populate({
+            path: 'comments', // Path to the embedded array
+            populate: {
+                path: 'commenter'
+            },
+        })
+    
+    res.render("./posts/postDetails.ejs", {post:post})
 })
 module.exports = router

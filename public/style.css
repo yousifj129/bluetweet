@@ -12,3 +12,107 @@ a{
 a:focus{
     color: aqua;
 }
+
+
+
+a {
+  color: inherit;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+select {
+  appearance: none;
+}
+
+/* Remove native arrow on IE */
+select::-ms-expand {
+  display: none;
+}
+
+/*Remove dotted outline from selected option on Firefox*/
+/*https://stackoverflow.com/questions/3773430/remove-outline-from-select-box-in-ff/18853002#18853002*/
+/*We use !important to override the color set for the select on line 99*/
+select:-moz-focusring {
+  color: transparent !important;
+  text-shadow: 0 0 0 var(--white);
+}
+
+textarea {
+  resize: none;
+  border: 1px solid white;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+
+/* FORM ELEMENTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+form h1 {
+  margin-bottom: 1.5rem;
+}
+
+form li,
+form .grid > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+form select,
+form input,
+form textarea,
+form button {
+  width: 100%;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid white;
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+form textarea {
+  height: 170px;
+    border: 1px solid white;
+
+}
+
+form ::placeholder {
+  color: inherit;
+  /*Fix opacity issue on Firefox*/
+  opacity: 1;
+}
+
+
+form select:focus,
+form input:focus,
+form textarea:focus {
+  transform: scale(1.02);
+}
+
+form select:hover,
+form input:hover,
+form textarea:hover {
+  transform: scale(1.02);
+}
