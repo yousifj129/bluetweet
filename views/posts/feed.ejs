@@ -9,39 +9,7 @@
   <body>
     <%- include("../partials/navbar.ejs") %>
     <div class="container">
-      <div class="post">
-        <% allPosts.reverse().forEach(post => { %>
-        <div>
-          <h2><%= post.creator.username %></h2>
-          <h3>Title: <%= post.title %></h3>
-          <% if (post.image) { %>
-          <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
-          <% } %>
-
-          <p>Content: <%= post.content %></p>
-          <div style="display: flex; gap: 20px">
-            <p>Likes: <%= post.likes.length %></p>
-            <p>Dislikes: <%= post.dislikes.length %></p>
-            <p>Comments: <%= post.comments.length %></p>
-          </div>
-
-          <% if (user) { %> <% if (post.creator._id == user._id) { %>
-          <div style="display: flex; gap: 20px; text-align: center">
-            <a href="/posts/delete/<%= post._id %>">delete post</a>
-            <a href="/posts/update/<%= post._id %>">update post</a>
-          </div>
-
-          <% } %>
-          <div style="display: flex; gap: 20px; text-align: center">
-            <a href="/posts/like/<%= post._id %>">like</a>
-            <a href="/posts/dislike/<%= post._id %>">dislike</a>
-          </div>
-
-          <% } %>
-          <a href="/posts/<%= post._id %>">See Post Details</a>
-          <hr />
-        </div>
-        <% }); %>
+        <%- include("../partials/postPartial.ejs") %>
       </div>
 
 

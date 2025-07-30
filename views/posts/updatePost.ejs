@@ -11,7 +11,7 @@
     <%- include("../partials/navbar.ejs") %>
 
     <h1>Update Post</h1>
-    <form action="/posts/<%= post._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+    <form action="/posts/<%= post._id %>?_method=PUT" method="post">
       <label for="title">Post Title: </label>
       <input type="text" name="title" id="title" value="<%= post.title %>" />
 

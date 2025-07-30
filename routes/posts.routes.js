@@ -7,7 +7,7 @@ const upload = multer({ dest: 'uploads/' })
 const dotenv = require("dotenv").config()
 var fs = require('fs');
 const isSignedIn = require("../middleware/isSignedIn");
-const mongoose  = require("mongoose");
+const mongoose = require("mongoose");
 // Configuration
 cloudinary.config({
     cloud_name: process.env.CLOUDNAME,
@@ -18,14 +18,20 @@ cloudinary.config({
 
 router.get("/", async (req, res) => {
     const allPosts = await Post.find().populate("creator")
+
+    console.log("original: ", req.originalUrl)
+    console.log("url: ", req.url)
+    console.log("base url:", req.baseUrl)
     res.render("./posts/feed.ejs", { allPosts: allPosts })
 })
 
 
 router.get("/new", isSignedIn, async (req, res) => {
+
     res.render("./posts/newPost.ejs")
 })
 router.get("/delete/:id", isSignedIn, async (req, res) => {
+
     const post = await Post.findById(req.params.id)
 
     if (req.session.user._id == post.creator) {
@@ -65,8 +71,8 @@ router.post("/new", upload.single('file'), async (req, res) => {
     }
 })
 router.get("/update/:id", async (req, res) => {
+
     const post = await Post.findById(req.params.id)
-    console.log(post)
     res.render("./posts/updatePost.ejs", { post: post })
 })
 
@@ -74,6 +80,7 @@ router.put("/:id", async (req, res) => {
     const triedPost = await Post.findById(req.params.id).populate()
     if (req.session.user._id == triedPost.creator._id) {
         let post = req.body
+        console.log(post)
         await Post.findByIdAndUpdate(req.params.id, post)
         res.redirect("/posts/")
     }
@@ -81,7 +88,7 @@ router.put("/:id", async (req, res) => {
         res.redirect("/auth/login")
     }
 })
-router.get("/like/:id", async (req, res) => {
+router.post("/like/:id", async (req, res) => {
     const post = await Post.findById(req.params.id)
 
     if (req.session.user) {
@@ -94,9 +101,9 @@ router.get("/like/:id", async (req, res) => {
             await Post.findByIdAndUpdate(req.params.id, post)
         }
     }
-    res.redirect("/posts/")
+    res.redirect(req.baseUrl)
 })
-router.get("/dislike/:id", async (req, res) => {
+router.post("/dislike/:id", async (req, res) => {
     const post = await Post.findById(req.params.id)
 
     if (req.session.user) {
@@ -111,7 +118,7 @@ router.get("/dislike/:id", async (req, res) => {
     }
 
 
-    res.redirect("/posts/")
+    res.redirect(req.baseUrl)
 })
 
 router.post("/comment/:id", isSignedIn, async (req, res) => {
@@ -122,17 +129,18 @@ router.post("/comment/:id", isSignedIn, async (req, res) => {
     })
 
     await Post.findByIdAndUpdate(req.params.id, post)
-    res.redirect("/posts/"+req.params.id)
+    res.redirect("/posts/" + req.params.id)
 })
 
 router.get("/:id", async (req, res) => {
     const post = await Post.findById(req.params.id).populate({
-            path: 'comments', // Path to the embedded array
-            populate: {
-                path: 'commenter'
-            },
-        })
-    
-    res.render("./posts/postDetails.ejs", {post:post})
+        path: 'comments', // Path to the embedded array
+        populate: {
+            path: 'commenter'
+        },
+    })
+
+
+    res.render("./posts/postDetails.ejs", { post: post })
 })
 module.exports = router

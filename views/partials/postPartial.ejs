@@ -1,0 +1,32 @@
+<div class="post">
+  <% allPosts.reverse().forEach(post=> { %>
+  <div>
+    <a href="/users/<%= post.creator._id %>"><h2><%= post.creator.username %></h2></a>
+    <h3>Title: <%= post.title %></h3>
+    <% if (post.image) { %>
+    <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
+    <% } %>
+
+    <p>Content: <%= post.content %></p>
+    <div style="display: flex; gap: 20px">
+        <form action="/posts/like/<%= post._id %>" method="post">
+            <input type="submit" value="Likes: <%= post.likes.length %>"/>
+        </form>
+        <form action="/posts/dislike/<%= post._id %>" method="post">
+            <input type="submit" value="Dislikes: <%= post.dislikes.length %>"/>
+        </form>
+    </div>
+
+    <% if (user) { %> <% if (post.creator._id==user._id) { %>
+    <div style="display: flex; gap: 20px; text-align: center">
+      <a href="/posts/delete/<%= post._id %>">delete post</a>
+      <a href="/posts/update/<%= post._id %>">update post</a>
+    </div>
+
+    <% } %>
+    <% } %>
+    <a href="/posts/<%= post._id %>">See Post Details</a>
+    <hr />
+  </div>
+  <% }); %>
+</div>

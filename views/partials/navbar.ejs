@@ -4,12 +4,11 @@
     <a href="/posts">Feed</a>
     <a href="/posts/new">Create Post</a>
 
-    <%= user.username %>
+    <a href="/users/<%= user._id %>"><%= user.username %></a>
     
 
     <%} else{ %>
     <a href="/auth/login">Login</a>
     <a href="/auth/sign-up">Sign Up</a>
     <%} %>
-    
 </nav>

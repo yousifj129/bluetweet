@@ -25,8 +25,14 @@
         <a href="/posts/delete/<%= post._id %>">delete post</a>
         <a href="/posts/update/<%= post._id %>">update post</a>
         <% } %>
-        <a href="/posts/like/<%= post._id %>">like</a>
-        <a href="/posts/dislike/<%= post._id %>">dislike</a>
+    <div style="display: flex; gap: 20px">
+        <form action="/posts/like/<%= post._id %>" method="post">
+            <input type="submit" value="Likes: <%= post.likes.length %>"/>
+        </form>
+        <form action="/posts/dislike/<%= post._id %>" method="post">
+            <input type="submit" value="Dislikes: <%= post.dislikes.length %>"/>
+        </form>
+    </div>
         <% } %>
         <hr />
         <div>
