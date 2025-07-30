@@ -1,0 +1,13 @@
+<script>
+    let scrollYPosition = localStorage.getItem(`${document.title}-scroll`);
+    if (!scrollYPosition) {
+        scrollYPosition = 0;
+    }
+    window.addEventListener("DOMContentLoaded", () => {
+        window.scrollTo(0, scrollYPosition);
+    });
+    window.addEventListener("beforeunload", () => {
+        scrollYPosition = window.scrollY;
+        localStorage.setItem(`${document.title}-scroll`, scrollYPosition);
+    });
+</script>
