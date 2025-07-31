@@ -17,8 +17,21 @@ cloudinary.config({
 
 
 router.get("/", async (req, res) => {
-    const allPosts = await Post.find().populate("creator")
-    res.render("./posts/feed.ejs", { allPosts: allPosts })
+
+    if(!req.query.type){
+        const allPosts = await Post.find().populate("creator")
+        res.render("./posts/feed.ejs", { allPosts: allPosts })
+    }
+    else if(req.query.type == "following"){
+        const allPosts = await Post.find().populate("creator")
+        const filteredPosts =  allPosts.filter((post)=>{
+            if(post.creator.followers.includes(req.session.user._id)){
+                return true;
+            }
+        })
+        console.log(filteredPosts)
+        res.render("./posts/feed.ejs", { allPosts: filteredPosts })
+    }
     
 })
 
@@ -138,7 +151,7 @@ router.get("/:id", async (req, res) => {
         populate: {
             path: 'commenter'
         },
-    })
+    }).populate("creator")
 
 
     res.render("./posts/postDetails.ejs", { post: post })

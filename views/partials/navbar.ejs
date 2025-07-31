@@ -4,6 +4,8 @@
     <% if (user){ %>
     <a href="/auth/logout">Logout</a>
     <a href="/posts">Feed</a>
+    <a href="/posts?type=following">Following</a>
+
     <a href="/posts/new">Create Post</a>
 
     <a href="/users/<%= user._id %>"><img src="<%= user.iconURL %>" alt="icon" id="profileicon"></a>

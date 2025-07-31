@@ -1,11 +1,14 @@
 <div class="post">
   <% allPosts.reverse().forEach(post=> { %>
   <div>
-    <a href="/users/<%= post.creator._id %>" style="display: flex;"><img src="<%= post.creator.iconURL %>" alt="icon" width="50px" height="50px"><h2><%= post.creator.username %></h2></a>
-    <h3>Title: <%= post.title %></h3>
+    <a href="/users/<%= post.creator._id %>" style="display: flex; align-items: center; justify-content: left;"><img src="<%= post.creator.iconURL %>" alt="icon" width="50px" height="50px"><h2><%= post.creator.username %></h2></a>
+    
+    <a href="/posts/<%= post._id %>" style="color:burlywood;"><h3>Title: <%= post.title %></h3>
+    
     <% if (post.image) { %>
     <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
     <% } %>
+    </a>
 
     <p>Content: <%= post.content %></p>
     <div style="display: flex; gap: 20px">
@@ -25,7 +28,6 @@
 
     <% } %>
     <% } %>
-    <a href="/posts/<%= post._id %>">See Post Details</a>
     <hr />
   </div>
   <% }); %>

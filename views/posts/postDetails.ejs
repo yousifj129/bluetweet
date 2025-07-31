@@ -3,53 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed</title>
+    <title>Post Details</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include("../partials/navbar.ejs") %>
 
     <h1>Feed</h1>
-    
-      <div class="post">
-        <h2><%= post.creator.username %></h2>
-        <h3>Title: <%= post.title %></h3>
-        <% if (post.image) { %>
-        <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
-        <% } %>
 
-        <p>Content: <%= post.content %></p>
-        <p>Likes: <%= post.likes.length %></p>
-        <p>Dislikes: <%= post.dislikes.length %></p>
-         <% if (user) { %> <% if (post.creator._id == user._id) { %>
-        <a href="/posts/delete/<%= post._id %>">delete post</a>
-        <a href="/posts/update/<%= post._id %>">update post</a>
-        <% } %>
-    <div style="display: flex; gap: 20px">
+    <div class="post">
+      <a href="/users/<%= post.creator._id %>" style="display: flex; align-items: center; justify-content: left;"><img src="<%= post.creator.iconURL %>" alt="icon" width="50px" height="50px"><h2><%= post.creator.username %></h2></a>
+      <h3>Title: <%= post.title %></h3>
+      <% if (post.image) { %>
+      <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
+      <% } %>
+
+      <p>Content: <%= post.content %></p>
+      <p>Likes: <%= post.likes.length %></p>
+      <p>Dislikes: <%= post.dislikes.length %></p>
+      <% if (user) { %> <% if (post.creator._id == user._id) { %>
+      <a href="/posts/delete/<%= post._id %>">delete post</a>
+      <a href="/posts/update/<%= post._id %>">update post</a>
+      <% } %>
+      <div style="display: flex; gap: 20px">
         <form action="/posts/like/<%= post._id %>" method="post">
-            <input type="submit" value="Likes: <%= post.likes.length %>"/>
+          <input type="submit" value="Likes: <%= post.likes.length %>" />
         </form>
         <form action="/posts/dislike/<%= post._id %>" method="post">
-            <input type="submit" value="Dislikes: <%= post.dislikes.length %>"/>
+          <input type="submit" value="Dislikes: <%= post.dislikes.length %>" />
         </form>
-    </div>
-        <% } %>
-        <hr />
-        <div>
-          <h3>comments</h3>
-          <form action="/posts/comment/<%= post._id %>" method="post">
-            <label for="content">Comment content: </label>
-            <textarea type="text" name="content" id="content" minlength="3"> </textarea>
+      </div>
+      <% } %>
+      <hr />
+      <div>
+        <h3>comments</h3>
+        <form action="/posts/comment/<%= post._id %>" method="post">
+          <label for="content">Comment content: </label>
+          <textarea type="text" name="content" id="content" minlength="3">
+          </textarea>
 
-            <input type="submit" value="post comment" />
-          </form>
-          <% post.comments.forEach(comment => { %>
-          <h4><%= comment.commenter.username %></h4>
-          <p><%= comment.content %></p>
-          <br />
-          <% }); %>
-        </div>
+          <input type="submit" value="post comment" />
+        </form>
+        <% post.comments.forEach(comment => { %>
+          <hr>
+        <a href="/users/<%= comment.commenter._id %>">
+          <div style="display: flex; align-items: center; justify-content: left">
+            <img
+              src="<%= comment.commenter.iconURL %>"
+              alt="user icon" width="35px" height="35px"
+            /> &nbsp;
+            <h4><%= comment.commenter.username %></h4>
+          </div>
+        </a>
+        <p style="margin: 0px;"><%= comment.content %></p>
+
+        <% }); %>
+      </div>
     </div>
-    
   </body>
 </html>
