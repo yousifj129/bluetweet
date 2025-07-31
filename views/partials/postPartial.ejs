@@ -19,15 +19,6 @@
             <input type="submit" value="Dislikes: <%= post.dislikes.length %>"/>
         </form>
     </div>
-
-    <% if (user) { %> <% if (post.creator._id==user._id) { %>
-    <div style="display: flex; gap: 20px; text-align: center">
-      <a href="/posts/delete/<%= post._id %>">delete post</a>
-      <a href="/posts/update/<%= post._id %>">update post</a>
-    </div>
-
-    <% } %>
-    <% } %>
     <hr />
   </div>
   <% }); %>

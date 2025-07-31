@@ -19,12 +19,8 @@
       <% } %>
 
       <p>Content: <%= post.content %></p>
-      <p>Likes: <%= post.likes.length %></p>
-      <p>Dislikes: <%= post.dislikes.length %></p>
-      <% if (user) { %> <% if (post.creator._id == user._id) { %>
-      <a href="/posts/delete/<%= post._id %>">delete post</a>
-      <a href="/posts/update/<%= post._id %>">update post</a>
-      <% } %>
+      <% if (user) { %> 
+        
       <div style="display: flex; gap: 20px">
         <form action="/posts/like/<%= post._id %>" method="post">
           <input type="submit" value="Likes: <%= post.likes.length %>" />
@@ -32,6 +28,14 @@
         <form action="/posts/dislike/<%= post._id %>" method="post">
           <input type="submit" value="Dislikes: <%= post.dislikes.length %>" />
         </form>
+        <% if (post.creator._id == user._id) { %>
+          <form action="/posts/update/<%= post._id %>" method="get">
+              <input type="submit" value="Update Post" />
+          </form>
+          <form action="/posts/delete/<%= post._id %>" method="get">
+              <input type="submit" value="Delete Post" />
+          </form>
+      <% } %>
       </div>
       <% } %>
       <hr />
@@ -39,12 +43,11 @@
         <h3>comments</h3>
         <form action="/posts/comment/<%= post._id %>" method="post">
           <label for="content">Comment content: </label>
-          <textarea type="text" name="content" id="content" minlength="3">
-          </textarea>
+          <textarea type="text" name="content" id="content" minlength="1"></textarea>
 
           <input type="submit" value="post comment" />
         </form>
-        <% post.comments.forEach(comment => { %>
+        <% post.comments.reverse().forEach(comment => { %>
           <hr>
         <a href="/users/<%= comment.commenter._id %>">
           <div style="display: flex; align-items: center; justify-content: left">
