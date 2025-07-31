@@ -1,7 +1,7 @@
 <div class="post">
   <% allPosts.reverse().forEach(post=> { %>
   <div>
-    <a href="/users/<%= post.creator._id %>"><h2><%= post.creator.username %></h2></a>
+    <a href="/users/<%= post.creator._id %>" style="display: flex;"><img src="<%= post.creator.iconURL %>" alt="icon" width="50px" height="50px"><h2><%= post.creator.username %></h2></a>
     <h3>Title: <%= post.title %></h3>
     <% if (post.image) { %>
     <img src="<%= post.image %>" alt="image" srcset="" width="300px" />

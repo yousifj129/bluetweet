@@ -11,7 +11,7 @@ const mongoose  = require("mongoose");
 
 router.get("/:id", async (req, res) => {
     const user = await User.findById(req.params.id)
-    const posts = await Post.find({creator:user._id})
+    const posts = await Post.find({creator:user._id}).populate("creator")
     
     res.render("./users/userProfile.ejs", {allPosts:posts, viewedUser:user})
 })

@@ -10,7 +10,7 @@
     <%- include("../partials/navbar.ejs") %>
 
     <div class="container">
-      <div style="display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 1px; justify-content: center; align-self:flex-start; align-items: start;">
         <img
           src="<%= viewedUser.iconURL %>"
           alt="icon"
@@ -18,6 +18,7 @@
           width="75px"
         />
         <h3><%= viewedUser.username %></h3>
+        <% if (user) { %>
         <% if (user._id != viewedUser._id) { %>
         <form action="/users/follow/<%= viewedUser._id %>" method="post">
           <input type="submit" value="Followers: <%= viewedUser.followers.length %>" />
@@ -26,6 +27,8 @@
             <h3>Followers: <%= viewedUser.followers.length %></h3>
 
           <% } %>
+
+        <% } %>
 
       </div>
       <%- include("../partials/postPartial.ejs") %>
