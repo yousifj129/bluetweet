@@ -18,7 +18,17 @@ cloudinary.config({
 
 router.get("/", async (req, res) => {
     try {
-        if (!req.query.type) {
+        if (req.query.search){
+            const searchQuery = req.query.search;
+            const allPosts = await Post.find({
+                $or: [
+                    { title: { $regex: searchQuery, $options: 'i' } },
+                    { content: { $regex: searchQuery, $options: 'i' } }
+                ]
+            }).populate("creator");
+            res.render("./posts/feed.ejs", { allPosts: allPosts });
+        }
+        else if (!req.query.type) {
             const allPosts = await Post.find().populate("creator")
             res.render("./posts/feed.ejs", { allPosts: allPosts })
         }

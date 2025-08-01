@@ -7,8 +7,6 @@
     <a href="/posts/new">Create Post</a>
 
     <a href="/users/<%= user._id %>" style="display: inline-flex; align-items: center; justify-content: center; padding: 0px;"><img src="<%= user.iconURL %>" alt="icon" style="width: 47px; height: 47px; padding: 1px;"><%= user.username %></a>
-    
-
     <%} else{ %>
     <a href="/auth/login">Login</a>
     <a href="/auth/sign-up">Sign Up</a>
