@@ -18,7 +18,7 @@ cloudinary.config({
 
 router.get("/", async (req, res) => {
     try {
-        if (req.query.search){
+        if (req.query.search) {
             const searchQuery = req.query.search;
             const allPosts = await Post.find({
                 $or: [
@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
                     { title: { $regex: searchQuery, $options: 'i' } },
                     { content: { $regex: searchQuery, $options: 'i' } }
                 ] // I don't know why this works but it does 
-            }).populate("creator"); 
+            }).populate("creator");
             res.render("./posts/feed.ejs", { allPosts: allPosts });
         }
         else if (!req.query.type) {
@@ -40,7 +40,6 @@ router.get("/", async (req, res) => {
                     return true;
                 }
             })
-            console.log(filteredPosts)
             res.render("./posts/feed.ejs", { allPosts: filteredPosts })
         } else if (req.query.type == "top") {
             const allPosts = await Post.aggregate([
@@ -50,9 +49,21 @@ router.get("/", async (req, res) => {
                     }
                 },
                 {
-                    $sort: { likesCount: 1 } 
+                    $sort: { likesCount: 1}
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "creator",
+                        foreignField: "_id",
+                        as: "creator"
+                    }
+                },
+                {
+                    $unwind: "$creator"
                 }
-            ]) // I don't know why this works but it does 
+            ])// I don't know why this works but it does 
+            console.log(allPosts)
             res.render("./posts/feed.ejs", { allPosts: allPosts })
         }
     } catch (error) {
@@ -130,7 +141,6 @@ router.put("/:id", async (req, res) => {
         const triedPost = await Post.findById(req.params.id).populate()
         if (req.session.user._id == triedPost.creator._id) {
             let post = req.body
-            console.log(post)
             await Post.findByIdAndUpdate(req.params.id, post)
             res.redirect("/posts/")
         }
@@ -157,7 +167,7 @@ router.post("/like/:id", async (req, res) => {
                 await Post.findByIdAndUpdate(req.params.id, post)
             }
         }
-        else{
+        else {
             res.redirect("/auth/login")
             return
         }
@@ -180,7 +190,7 @@ router.post("/dislike/:id", async (req, res) => {
                 await Post.findByIdAndUpdate(req.params.id, post)
             }
         }
-        else{
+        else {
             res.redirect("/auth/login")
             return
         }

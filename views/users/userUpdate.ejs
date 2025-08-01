@@ -19,13 +19,15 @@
         />
         <h3><%= viewedUser.username %></h3>
         <% if (user) { %>
-            <form action="/users/<%= viewedUser._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+            <form action="/users/<%= viewedUser._id %>?_method=PUT" method="post" enctype="multipart/form-data" style="display: block; width: fit-content;">
                 <label for="username">username: </label>
                 <input type="text" name="username" id="username" value="<%= viewedUser.username %>" required>
 
                 <label for="description">description: </label>
-                <input type="text" name="description" id="description" value="<%= viewedUser.description %>">
+                <br>
+                <textarea type="text" name="description" id="description" value="<%= viewedUser.description %>" style="width: 100%;"></textarea>
 
+                <br>
                 <label for="iconURL">Icon: </label>
                 <input type="file" name="iconURL" id="iconURL" accept="image/*">
 

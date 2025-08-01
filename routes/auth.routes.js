@@ -10,8 +10,9 @@ router.get("/sign-up", (req, res) => {
 router.post("/sign-up", async (req, res) => {
     try {
         const { username, password } = req.body;
-        const randomNumber = Math.min(Math.floor(Math.random()*100+1), 100)
-        const iconL = `https://avatar.iran.liara.run/public/${randomNumber}`
+        const randomNumber = Math.min(Math.floor(Math.random()*10000), 10000)
+        
+        const iconL = `https://api.dicebear.com/9.x/pixel-art/svg?seed=${randomNumber}`
         console.log(iconL)
         // VALIDATION
         //  Check if all the necessary fields are there

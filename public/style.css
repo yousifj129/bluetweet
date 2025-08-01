@@ -56,17 +56,18 @@ form button {
     padding: 15px 10px;
     border: 1px solid white;
     color: var(--white);
-    background-color: black;
+    background-color: rgb(40, 40, 40);
     transition: ease-in-out 0.3s;
 }
 
 form textarea {
     height: 170px;
     border: 1px solid white;
-    background-color: black;
     width: 100%;
     color: white;
+    background-color: rgb(40, 40, 40);
     transition: ease-in-out 0.3s;
+    margin: 10px 0 10px 0;
 
 }
 
@@ -113,7 +114,7 @@ form button {
     padding: 15px 10px;
     margin-bottom: 15px;
     border: 1px solid white;
-    color: var(--white);
+    color: wheat;
     text-align: center;
 }
 
@@ -141,4 +142,8 @@ form button {
 
 #description{
     width: 200px
+}
+
+a h3{
+    color: white;
 }
