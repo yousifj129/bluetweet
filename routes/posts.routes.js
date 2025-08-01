@@ -32,7 +32,16 @@ router.get("/", async (req, res) => {
             console.log(filteredPosts)
             res.render("./posts/feed.ejs", { allPosts: filteredPosts })
         } else if (req.query.type == "top") {
-            const allPosts = await Post.find({}, {},{}).populate("creator")
+            const allPosts = await Post.aggregate([
+                {
+                    $addFields: {
+                        likesCount: { $size: "$likes" }
+                    }
+                },
+                {
+                    $sort: { likesCount: 1 } 
+                }
+            ]) // I don't know why this works but it does 
             res.render("./posts/feed.ejs", { allPosts: allPosts })
         }
     } catch (error) {

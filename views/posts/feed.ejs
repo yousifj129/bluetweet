@@ -9,7 +9,13 @@
   <body>
 
     <%- include("../partials/navbar.ejs") %>
+    <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center; align-items: center;">
+            <a href="/posts">Recent Posts</a>
+            <a href="/posts?type=following">Following Posts</a>
+            <a href="/posts?type=following">Top Posts</a>
+        </div>
     <div class="container">
+        
         <%- include("../partials/postPartial.ejs") %>
       </div>
 
