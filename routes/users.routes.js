@@ -7,28 +7,37 @@ const upload = multer({ dest: 'uploads/' })
 const dotenv = require("dotenv").config()
 var fs = require('fs');
 const isSignedIn = require("../middleware/isSignedIn");
-const mongoose  = require("mongoose");
+const mongoose = require("mongoose");
 
 router.get("/:id", async (req, res) => {
-    const user = await User.findById(req.params.id)
-    const posts = await Post.find({creator:user._id}).populate("creator")
-    
-    res.render("./users/userProfile.ejs", {allPosts:posts, viewedUser:user})
+    try {
+        const user = await User.findById(req.params.id)
+        const posts = await Post.find({ creator: user._id }).populate("creator")
+
+        res.render("./users/userProfile.ejs", { allPosts: posts, viewedUser: user })
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 router.post("/follow/:id", async (req, res) => {
-    const user = await User.findById(req.params.id)
-    if(!user.followers.includes(req.session.user._id))
-    {
-        user.followers.push(new mongoose.Types.ObjectId(req.session.user._id))
-    }
-    else{
-        const index = user.followers.indexOf(req.session.user._id)
-        user.followers.splice(index, 1)
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user.followers.includes(req.session.user._id)) {
+            user.followers.push(new mongoose.Types.ObjectId(req.session.user._id))
+        }
+        else {
+            const index = user.followers.indexOf(req.session.user._id)
+            user.followers.splice(index, 1)
+        }
+
+        await User.findByIdAndUpdate(req.params.id, user)
+        res.redirect("/users/" + req.params.id)
+    } catch (error) {
+        console.log(error)
     }
 
-    await User.findByIdAndUpdate(req.params.id, user)
-    res.redirect("/users/" + req.params.id)
 })
 
 
