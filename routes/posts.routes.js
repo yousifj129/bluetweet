@@ -22,10 +22,11 @@ router.get("/", async (req, res) => {
             const searchQuery = req.query.search;
             const allPosts = await Post.find({
                 $or: [
+                    { creator: { $in: await User.find({ username: { $regex: searchQuery, $options: 'i' } }).distinct('_id') } },
                     { title: { $regex: searchQuery, $options: 'i' } },
                     { content: { $regex: searchQuery, $options: 'i' } }
-                ]
-            }).populate("creator");
+                ] // I don't know why this works but it does 
+            }).populate("creator"); 
             res.render("./posts/feed.ejs", { allPosts: allPosts });
         }
         else if (!req.query.type) {
