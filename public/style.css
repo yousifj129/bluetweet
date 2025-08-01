@@ -44,6 +44,9 @@ form h1 {
     margin-bottom: 1.5rem;
 }
 
+form{
+    width: 50%;
+}
 form select,
 form input,
 form button {
@@ -54,16 +57,16 @@ form button {
     border: 1px solid white;
     color: var(--white);
     background-color: black;
-    transition: ease-in-out 0.3s
+    transition: ease-in-out 0.3s;
 }
 
 form textarea {
     height: 170px;
     border: 1px solid white;
     background-color: black;
-    width: 99%;
+    width: 100%;
     color: white;
-    transition: ease-in-out 0.3s
+    transition: ease-in-out 0.3s;
 
 }
 
@@ -72,7 +75,7 @@ form textarea {
 form select:focus,
 form input:focus,
 form textarea:focus {
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 form select:hover,
@@ -105,7 +108,13 @@ form button {
     margin: 5px;
 }
 #navbar a{
-    border: 1px white solid;
+    width: 8%;
+    line-height: 1.2;
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    border: 1px solid white;
+    color: var(--white);
+    text-align: center;
 }
 
 .container{
