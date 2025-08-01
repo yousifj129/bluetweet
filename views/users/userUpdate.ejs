@@ -18,21 +18,23 @@
           width="75px"
         />
         <h3><%= viewedUser.username %></h3>
-        <p id="description"><%= viewedUser.description %></p>
         <% if (user) { %>
-        <% if (user._id != viewedUser._id) { %>
-        <form action="/users/follow/<%= viewedUser._id %>" method="post">
-          <input type="submit" value="Followers: <%= viewedUser.followers.length %>" />
-        </form>
-        <% } else{ %>
-            <h3>Followers: <%= viewedUser.followers.length %></h3>
-          <a href="/users/update/<%= viewedUser._id %>">update profile</a>
+            <form action="/users/<%= viewedUser._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+                <label for="username">username: </label>
+                <input type="text" name="username" id="username" value="<%= viewedUser.username %>" required>
 
-          <% } %>
+                <label for="description">description: </label>
+                <input type="text" name="description" id="description" value="<%= viewedUser.description %>">
 
-        <% } %>
+                <label for="iconURL">Icon: </label>
+                <input type="file" name="iconURL" id="iconURL" accept="image/*">
+
+                <input type="submit" value="update profile">
+            </form>
+
+        <%} %>
+
       </div>
-      <%- include("../partials/postPartial.ejs") %>
     </div>
   </body>
 </html>

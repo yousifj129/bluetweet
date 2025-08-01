@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: "User",
         require: false
+    },
+    description:{
+        type: String,
+        required: false
     }
 })
 

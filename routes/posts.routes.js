@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 const dotenv = require("dotenv").config()
-var fs = require('fs');
+const fs = require('fs');
 const isSignedIn = require("../middleware/isSignedIn");
 const mongoose = require("mongoose");
 // Configuration
@@ -157,6 +157,10 @@ router.post("/like/:id", async (req, res) => {
                 await Post.findByIdAndUpdate(req.params.id, post)
             }
         }
+        else{
+            res.redirect("/auth/login")
+            return
+        }
         res.redirect(originalUrl)
     } catch (error) {
         console.log(error)
@@ -176,7 +180,10 @@ router.post("/dislike/:id", async (req, res) => {
                 await Post.findByIdAndUpdate(req.params.id, post)
             }
         }
-
+        else{
+            res.redirect("/auth/login")
+            return
+        }
 
         res.redirect(originalUrl)
     } catch (error) {
