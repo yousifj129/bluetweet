@@ -42,6 +42,8 @@ router.get("/", async (req, res) => {
             })
             res.render("./posts/feed.ejs", { allPosts: filteredPosts })
         } else if (req.query.type == "top") {
+
+            //https://stackoverflow.com/questions/16680015/how-to-use-populate-and-aggregate-in-same-statement
             const allPosts = await Post.aggregate([
                 {
                     $addFields: {
@@ -58,11 +60,8 @@ router.get("/", async (req, res) => {
                         foreignField: "_id",
                         as: "creator"
                     }
-                },
-                {
-                    $unwind: "$creator"
                 }
-            ])// I don't know why this works but it does 
+            ])// I don't know why this works but it does (I kinda get it but not really)
             console.log(allPosts)
             res.render("./posts/feed.ejs", { allPosts: allPosts })
         }
