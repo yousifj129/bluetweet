@@ -16,7 +16,7 @@ cloudinary.config({
 });
 
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res) => {    
     try {
         if (req.query.search) {
             const searchQuery = req.query.search;
@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
                     }
                 }
             ])// I don't know why this works but it does (I kinda get it but not really)
-            console.log(allPosts)
+
             res.render("./posts/feed.ejs", { allPosts: allPosts })
         }
     } catch (error) {
@@ -73,7 +73,6 @@ router.get("/", async (req, res) => {
 
 
 router.get("/new", isSignedIn, async (req, res) => {
-
     res.render("./posts/newPost.ejs")
 })
 router.get("/delete/:id", isSignedIn, async (req, res) => {
