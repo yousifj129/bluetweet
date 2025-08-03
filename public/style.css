@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(23, 23, 23);
     color: white;
     flex-direction: column;
     font-family:'Times New Roman', Times, serif
@@ -103,10 +103,13 @@ form button {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 100%;
+    width: 52%;
     color: white;
     border-bottom: 1px white solid;
-    margin: 5px;
+    margin: -10px;
+    padding-top: 15px;
+    margin-bottom: 5px;
+    transition:ease-in-out 0.3s;
 }
 #navbar a{
     width: 140px;
@@ -116,6 +119,12 @@ form button {
     border: 1px solid white;
     color: wheat;
     text-align: center;
+    text-decoration-line: none;
+    transition: ease-in-out 0.3s;
+}
+
+#navbar a:hover{
+    color: rgb(201, 130, 0);
 }
 
 .container{
@@ -146,4 +155,23 @@ form button {
 
 a h3{
     color: white;
+}
+
+
+img{
+    display: flex;
+    justify-self: center;
+    object-fit: cover;
+    object-position: center;
+    align-self: center;
+    max-height:600px;
+}
+.postContainer{
+    display: flex;
+    flex-direction: column;
+}
+.postContainer a img{
+    display: flex;
+    justify-self: center;
+    align-self: center;
 }

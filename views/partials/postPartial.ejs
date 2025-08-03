@@ -1,15 +1,15 @@
 <div class="post">
   <% allPosts.reverse().forEach(post=> { %>
-  <div>
+  <div class="postContainer">
     <% if(Array.isArray(post.creator)) {%>
        <% post.creator = post.creator[0] %>
     <%}%>
     <a href="/users/<%= post.creator._id %>" style="display: flex; align-items: center; justify-content: left;"><img src="<%= post.creator.iconURL %>" alt="icon" id="profileicon"><h2><%= post.creator.username %></h2></a>
     
-    <a href="/posts/<%= post._id %>"><h3>Title: <%= post.title %></h3>
+    <a href="/posts/<%= post._id %>"><h3><%= post.title %></h3>
     
     <% if (post.image) { %>
-    <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
+    <img src="<%= post.image %>" alt="image" srcset="" width="500px" />
     <% } %>
     </a>
 

@@ -11,11 +11,11 @@
 
     <h1>Feed</h1>
 
-    <div class="post">
+    <div class="post postContainer" >
       <a href="/users/<%= post.creator._id %>" style="display: flex; align-items: center; justify-content: left;"><img src="<%= post.creator.iconURL %>" alt="icon" id="profileicon"><h2><%= post.creator.username %></h2></a>
-      <h3>Title: <%= post.title %></h3>
+      <h3><%= post.title %></h3>
       <% if (post.image) { %>
-      <img src="<%= post.image %>" alt="image" srcset="" width="300px" />
+      <img src="<%= post.image %>" alt="image" srcset="" width="500px" />
       <% } %>
 
       <p>Content: <%= post.content %></p>
@@ -41,7 +41,7 @@
       <hr />
       <div>
         <h3>comments</h3>
-        <form action="/posts/comment/<%= post._id %>" method="post">
+        <form action="/posts/comment/<%= post._id %>" method="post" style="width: 99.5%;">
           <label for="content">Comment content: </label>
           <textarea type="text" name="content" id="content" minlength="1"></textarea>
 
