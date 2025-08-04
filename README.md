@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/yousifj129/bluetweet">
-    <img src="./assets/thumbnail.png" alt="Logo" width="80" height="80">
+    <img src="./public/thumbnail.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">BlueTweet</h3>
