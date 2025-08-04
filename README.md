@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/yousifj129/bluetweet">
-    <img src="./public/thumbnail.png" alt="Logo" width="80" height="80">
+    <img src="./public/thumbnail.png" alt="Logo" width="800px" height="800px">
   </a>
 
 <h3 align="center">BlueTweet</h3>
@@ -155,9 +155,9 @@ Project Link: [https://github.com/yousifj129/bluetweet](https://github.com/yousi
 
 ## Next Step
 
-* making different levels and different obstacles
-* using the canvas tag
-* adding best score for infinite mode and saving it in local storage
+* Private chat with other users
+* Repost a post, just like retweet in twitter
+* 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
