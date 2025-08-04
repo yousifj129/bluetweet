@@ -12,12 +12,12 @@
     <%- include("../partials/navbar.ejs") %>
 
     <div class="container">
-      <div style="display: flex; flex-direction: column; gap: 1px; justify-content: center; align-self:flex-start; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 1px; justify-content: center; align-self:flex-start; align-items: start; margin-top: 50px;">
         <img
           src="<%= viewedUser.iconURL %>"
           alt="icon"
           id="icon"
-          width="75px"
+          style="width: 150px; height: 150px;"
         />
         <h3><%= viewedUser.username %></h3>
         <p id="description"><%= viewedUser.description %></p>
