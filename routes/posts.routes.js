@@ -120,6 +120,8 @@ router.post("/new", upload.single('file'), async (req, res) => {
             res.redirect("/auth/login")
         }
     } catch (error) {
+        res.redirect("/posts/new")
+
         console.log(error)
     }
 
