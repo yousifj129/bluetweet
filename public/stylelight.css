@@ -2,14 +2,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(23, 23, 23);
-    color: white;
+    background-color: rgb(255, 255, 255);
     flex-direction: column;
-    font-family:'Times New Roman', Times, serif
+    font-family:'Times New Roman', Times, serif;
+    margin: 0px;
 }
 
 a {
-    color: wheat;
+    color: rgb(255, 153, 0);
 }
 
 a:focus {
@@ -24,6 +24,7 @@ textarea,
 button {
     font-family: inherit;
     font-size: 100%;
+    box-sizing: border-box;
 }
 
 button,
@@ -33,7 +34,7 @@ label {
 
 textarea {
     resize: none;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 ul {
@@ -54,7 +55,7 @@ form button {
     width: 100%;
     line-height: 1.2;
     padding: 15px 10px;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
     color: var(--white);
     background-color: rgb(40, 40, 40);
     transition: ease-in-out 0.3s;
@@ -62,10 +63,10 @@ form button {
 
 form textarea {
     height: 170px;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
     width: 100%;
     color: white;
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(230, 230, 230);
     transition: ease-in-out 0.3s;
     margin: 10px 0 10px 0;
 
@@ -88,12 +89,12 @@ form textarea:hover {
 form input,
 form button {
     margin-top: 15px;
-    background-color: rgb(40, 40, 40);
-    color: wheat;
+    background-color: rgb(255, 255, 255);
+    color:rgb(201, 130, 0);
 }
 
 .post {
-    border: 1px white solid;
+    border: 1px rgb(0, 0, 0) solid;
     padding: 10px;
     width: 50%;
 }
@@ -104,8 +105,8 @@ form button {
     align-items: center;
     gap: 20px;
     width: 52%;
-    color: white;
-    border-bottom: 1px white solid;
+    color: rgb(0, 0, 0);
+    /* border-bottom: 1px rgb(0, 0, 0) solid; */
     margin: -10px;
     padding-top: 15px;
     margin-bottom: 5px;
@@ -116,15 +117,15 @@ form button {
     line-height: 1.2;
     padding: 15px 10px;
     margin-bottom: 15px;
-    border: 1px solid white;
-    color: wheat;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(201, 130, 0);
     text-align: center;
     text-decoration-line: none;
     transition: ease-in-out 0.3s;
 }
 
 #navbar a:hover{
-    color: rgb(201, 130, 0);
+    color: rgb(255, 166, 0);
 }
 
 .container{
@@ -154,7 +155,7 @@ form button {
 }
 
 a h3{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -174,4 +175,12 @@ img{
     display: flex;
     justify-self: center;
     align-self: center;
+}
+#navcontainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(83, 95, 224);
+    margin:0px;
 }

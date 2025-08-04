@@ -93,11 +93,11 @@ APISECRET= cloudinary api secret
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Ability to create accounts and login and update profile pictures and description.
-- [x] Ability to post text and images if needed.
-- [x] Ability to comment on a post and like or dislike a post.
-- [x] Ability to follow other users and see their content on the "following" feed page
-- [x] Ability to search for posts
+- [x] create accounts and login and update profile pictures and description.
+- [x] post text and images if needed.
+- [x] comment on a post and like or dislike a post.
+- [x] follow other users and see their content on the "following" feed page
+- [x] search for posts
 
 
 
@@ -157,7 +157,10 @@ Project Link: [https://github.com/yousifj129/bluetweet](https://github.com/yousi
 
 * Private chat with other users
 * Repost a post, just like retweet in twitter
-* 
+* Post videos along side images
+* Ability to add multiple images and videos in 1 post
+* if you follow someone and he follows you back you become "friends"
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

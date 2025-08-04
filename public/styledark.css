@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(23, 23, 23);
+    color: white;
+    flex-direction: column;
+    font-family:'Times New Roman', Times, serif;
+    margin: 0px;
+}
+
+a {
+    color: wheat;
+}
+
+a:focus {
+    color: aqua;
+}
+
+
+
+input,
+select,
+textarea,
+button {
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+button,
+label {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+    border: 1px solid white;
+}
+
+ul {
+    list-style: none;
+}
+
+form h1 {
+    margin-bottom: 1.5rem;
+}
+
+form{
+    width: 50%;
+}
+form select,
+form input,
+form button {
+    display: inline;
+    width: 100%;
+    line-height: 1.2;
+    padding: 15px 10px;
+    border: 1px solid white;
+    color: var(--white);
+    background-color: rgb(40, 40, 40);
+    transition: ease-in-out 0.3s;
+}
+
+form textarea {
+    height: 170px;
+    border: 1px solid white;
+    width: 100%;
+    color: white;
+    background-color: rgb(40, 40, 40);
+    transition: ease-in-out 0.3s;
+    margin: 10px 0 10px 0;
+
+}
+
+
+
+form select:focus,
+form input:focus,
+form textarea:focus {
+    transform: scale(1.01);
+}
+
+form select:hover,
+form input:hover,
+form textarea:hover {
+    transform: scale(1.01);
+}
+
+form input,
+form button {
+    margin-top: 15px;
+    background-color: rgb(40, 40, 40);
+    color: wheat;
+}
+
+.post {
+    border: 1px white solid;
+    padding: 10px;
+    width: 50%;
+}
+
+#navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 52%;
+    color: white;
+    border-bottom: 1px white solid;
+    margin: -10px;
+    padding-top: 15px;
+    margin-bottom: 5px;
+    transition:ease-in-out 0.3s;
+}
+#navbar a{
+    width: 140px;
+    line-height: 1.2;
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    border: 1px solid white;
+    color: wheat;
+    text-align: center;
+    text-decoration-line: none;
+    transition: ease-in-out 0.3s;
+}
+
+#navbar a:hover{
+    color: rgb(201, 130, 0);
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap:25px
+}
+
+
+#profileicon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#description{
+    width: 200px
+}
+
+a h3{
+    color: white;
+}
+
+
+img{
+    display: flex;
+    justify-self: center;
+    object-fit: cover;
+    object-position: center;
+    align-self: center;
+    max-height:600px;
+}
+.postContainer{
+    display: flex;
+    flex-direction: column;
+}
+.postContainer a img{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+#navcontainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(36, 36, 36);
+    margin:0px;
+}

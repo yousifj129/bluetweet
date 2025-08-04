@@ -1,15 +1,76 @@
 <%- include("../partials/scrollBack.ejs") %>
-
-<nav id="navbar">
+<div id="navcontainer">
+  <nav id="navbar">
     <% if (user){ %>
     <a href="/auth/logout">Logout</a>
     <a href="/posts">Feed</a>
     <a href="/posts/new">Create Post</a>
 
-    <a href="/users/<%= user._id %>" style="display: inline-flex; align-items: center; justify-content: center; padding: 0px;"><img src="<%= user.iconURL %>" alt="icon" id="profileicon" style="width: 47px; height: 47px; padding: 1px;"><%= user.username %></a>
+    <a
+      href="/users/<%= user._id %>"
+      style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+      "
+      ><img
+        src="<%= user.iconURL %>"
+        alt="icon"
+        id="profileicon"
+        style="width: 47px; height: 47px; padding: 1px"
+      /><%= user.username %></a
+    >
     <%} else{ %>
     <a href="/auth/login">Login</a>
     <a href="/auth/sign-up">Sign Up</a>
     <a href="/posts">Feed</a>
     <%} %>
-</nav>
+    <a type="button" id="lightSwitch">light switch</a>
+  </nav>
+</div>
+
+<script>
+  function changeMode() {
+    if (localStorage.getItem("theme") == null) {
+      localStorage.setItem("theme", "dark");
+    } else if (localStorage.getItem("theme") == "dark") {
+      localStorage.setItem("theme", "light");
+    } else if (localStorage.getItem("theme") == "light") {
+      localStorage.setItem("theme", "dark");
+    }
+    update();
+  }
+  function update() {
+    if (localStorage.getItem("theme") == "dark") {
+      if (document.querySelector("#style")) {
+        document.querySelector("#style").remove();
+      }
+
+      var link = document.createElement("link");
+      link.href = "/styledark.css";
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.id = "style";
+      document.head.append(link);
+    } else if (localStorage.getItem("theme") == "light") {
+      if (document.querySelector("#style")) {
+        document.querySelector("#style").remove();
+      }
+      var link = document.createElement("link");
+      link.href = "/stylelight.css";
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.id = "style";
+      document.head.append(link);
+    }
+  }
+
+  function init() {
+    update();
+    console.log("haha");
+    const lightSwitch = document.getElementById("lightSwitch");
+    lightSwitch.addEventListener("click", changeMode);
+  }
+  document.addEventListener("DOMContentLoaded", init);
+</script>
