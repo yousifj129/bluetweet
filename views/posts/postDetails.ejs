@@ -11,8 +11,6 @@
   <body>
     <%- include("../partials/navbar.ejs") %>
 
-    <h1>Feed</h1>
-
     <div class="post postContainer" >
       <a href="/users/<%= post.creator._id %>" style="display: flex; align-items: center; justify-content: left;"><img src="<%= post.creator.iconURL %>" alt="icon" id="profileicon"><h2><%= post.creator.username %></h2></a>
       <h3><%= post.title %></h3>
