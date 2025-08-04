@@ -56,7 +56,9 @@ app.use(isSignedIn) //all your protected routes go below this middleware
 // Routes go here
 
 
-
+app.get("/",(req,res)=>{
+  res.redirect("/auth/login")
+})
 
 
 
