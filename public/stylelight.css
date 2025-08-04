@@ -9,7 +9,7 @@ body {
 }
 
 a {
-    color: rgb(255, 153, 0);
+    color: rgb(63, 77, 0);
 }
 
 a:focus {
@@ -90,7 +90,7 @@ form input,
 form button {
     margin-top: 15px;
     background-color: rgb(255, 255, 255);
-    color:rgb(201, 130, 0);
+    color:rgb(0, 0, 0);
 }
 
 .post {
@@ -118,10 +118,11 @@ form button {
     padding: 15px 10px;
     margin-bottom: 15px;
     border: 1px solid rgb(0, 0, 0);
-    color: rgb(201, 130, 0);
+    color: rgb(0, 0, 0);
     text-align: center;
     text-decoration-line: none;
     transition: ease-in-out 0.3s;
+    border-radius: 0px;
 }
 
 #navbar a:hover{
@@ -181,6 +182,6 @@ img{
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-color: rgb(83, 95, 224);
+    background-color: rgb(206, 206, 206);
     margin:0px;
 }

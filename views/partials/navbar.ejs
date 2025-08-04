@@ -67,6 +67,9 @@
   }
 
   function init() {
+    if (localStorage.getItem("theme") == null) {
+      localStorage.setItem("theme", "dark");
+    }
     update();
     console.log("haha");
     const lightSwitch = document.getElementById("lightSwitch");
