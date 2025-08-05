@@ -56,21 +56,26 @@
 This is a twitter inspired social media application. 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
-
-* HTML
-* Javascript
-* CSS
-* MongoDB
 * EJS
+* HTML5
+* CSS3
+* JavaScript
 * Node.js
+* Express.js
+* Cloudinary
+* MongoDB
+* mongoose
+* morgan
+* multer
+* bcrypt.js
+* dotenv
+* method-override
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -101,7 +106,6 @@ APISECRET= cloudinary api secret
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -116,7 +120,6 @@ Contributions are what make the open source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Top contributors:
 
@@ -131,18 +134,6 @@ Contributions are what make the open source community such an amazing place to l
 
 Distributed under the project_license. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Project Link: [https://github.com/yousifj129/bluetweet](https://github.com/yousifj129/bluetweet)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
 ## Attributions
@@ -150,8 +141,11 @@ Project Link: [https://github.com/yousifj129/bluetweet](https://github.com/yousi
 * Source of logo: ChatGPT
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+## Things I am proud of
+* top posts in feed using aggregate to add a field of likes and sort posts based on it
+* searching for posts and users using $regex
+* learned about logical queries in mongodb such as $or and $regex and $size and $lt and many others
+* did some security checks on every route that is requiring some security, such as the delete route and update
 
 ## Next Step
 
@@ -160,7 +154,7 @@ Project Link: [https://github.com/yousifj129/bluetweet](https://github.com/yousi
 * Post videos along side images
 * Ability to add multiple images and videos in 1 post
 * if you follow someone and he follows you back you become "friends"
-
+* redesign the whole project
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

@@ -14,9 +14,9 @@
     <h1>New Post</h1>
     <form action="/posts/new" method="post" enctype="multipart/form-data">
       <label for="title">Post Title: </label>
-      <input type="text" name="title" id="title" />
+      <input type="text" name="title" id="title" minlength="1"/>
       <label for="content">Content: </label>
-      <textarea type="text" name="content" id="content"> </textarea>
+      <textarea type="text" name="content" id="content" minlength="1"> </textarea>
       <input type="file" name="file" id="file" />
       <input type="submit" value="post" />
     </form>
